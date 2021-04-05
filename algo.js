@@ -118,4 +118,40 @@ for( parentNode in tree){
   return (highest_children_count > 2 ) ? "false":"true"; 
 
 } // end method TreeConstructor
+
+
+/*
+Bracket Matcher
+Have the function BracketMatcher(str) take the str parameter being passed and return 1 if the brackets are correctly matched and each one is accounted for. 
+Otherwise return 0. For example: if str is "(hello (world))", then the output should be 1, but if str is "((hello (world))" the the output should be 0 because 
+the brackets do not correctly match up. Only "(" and ")" will be used as brackets. If str contains no brackets return 1.
+
+Examples
+Input: "(coder)(byte))"
+Output: 0
+Input: "(c(oder)) b(yte)"
+Output: 1
+*/
+   
+function BracketMatcher(str) { 
+//match the brackets from str
+let brackets = str.match(/[()]/ig)
+
+let open_bracket_count = 0;
+let closed_bracket_count = 0;
+brackets.forEach( bracket=>{
+  if ( bracket =="("){
+    open_bracket_count++;
+  } else if ( bracket == ")"){
+    closed_bracket_count++;
+  }
+})
+
+  /*
+  returns 1 if the number of open_brackets matches
+  the number of closed_brackets otherwise 0
+  */
+  return ( open_bracket_count === closed_bracket_count ) ? 1 : 0;
+
+}//end BracketMatcher
    
